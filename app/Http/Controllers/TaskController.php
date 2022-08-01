@@ -11,11 +11,15 @@ use DB;
 
 class TaskController extends Controller
 {
+    //Show task list
     function index()
     {
         $tasks = DB::select('select * from tasks');
         return view('task',['tasks'=>$tasks]);
     }
+    /*
+        Create/Update task
+    */
     function create($id='')
     {
         if($id)
@@ -25,7 +29,10 @@ class TaskController extends Controller
         }
         return view('task.create');
     }
-    function store(Request $request,$id='')
+    /*
+        Save task
+    */
+    function store(Request $request, $id='')
     {
         if($id)
         {
@@ -41,6 +48,10 @@ class TaskController extends Controller
         $tasks = DB::select('select * from tasks');
         return Redirect::to('/')->with(['tasks'=>$tasks]);
     }
+    /*
+        Delete task
+        Parameter : int
+    */
     function delete($id)
     {
         DB::delete('DELETE FROM tasks WHERE id = ?', [$id]);

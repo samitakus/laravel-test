@@ -1,5 +1,5 @@
 1. Required
-Laravel 8
+Laravel 8,
 php 8.0.0
 
 2. copy files and put them under htdocs

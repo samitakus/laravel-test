@@ -14,7 +14,7 @@ class TaskController extends Controller
     //Show task list
     function index()
     {
-        $tasks = DB::select('select * from tasks');
+        $tasks = DB::select('SELECT * FROM tasks');
         return view('task',['tasks'=>$tasks]);
     }
     /*
@@ -45,8 +45,8 @@ class TaskController extends Controller
         
         $task->name = $request->input('taskname');
         $task->save();
-        $tasks = DB::select('select * from tasks');
-        return Redirect::to('/')->with(['tasks'=>$tasks]);
+        $tasks = DB::select('SELECT * FROM tasks');
+        return Redirect::to('/')->with(['tasks'=>$tasks,'status'=>'Task updated successfully.']);
     }
     /*
         Delete task
@@ -55,7 +55,7 @@ class TaskController extends Controller
     function delete($id)
     {
         DB::delete('DELETE FROM tasks WHERE id = ?', [$id]);
-        $tasks = DB::select('select * from tasks');
+        $tasks = DB::select('SELECT * FROM tasks');
         return Redirect::to('/')->with(['tasks'=>$tasks,'msg'=>'Task deleted.']);
     }
    

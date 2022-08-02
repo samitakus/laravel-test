@@ -44,9 +44,12 @@
                         </g>
                     </svg>
                 </div>
-                <div>
-                    @if(isset($msg))
-                       <p> {{$msg}}</p>
+                <div class="mt-8 text-gray-600 dark:text-gray-400 text-lg bg-primary">
+                    @if(session('msg'))
+                       <p style="color:red;"> {{session('msg')}}</p>
+                    @endif
+                    @if(session('status'))
+                       <p style="color:green;"> {{session('status')}}</p>
                     @endif
                 </div>
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
